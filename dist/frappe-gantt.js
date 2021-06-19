@@ -172,7 +172,7 @@ var date_utils = {
             HH: values[3],
             mm: values[4],
             ss: values[5],
-            SSS:values[6],
+            SSS: values[6],
             D: values[2],
             MMMM: month_names[lang][+values[1]],
             MMM: month_names[lang][+values[1]]
@@ -659,7 +659,11 @@ class Bar {
     show_popup() {
         if (this.gantt.bar_being_dragged) return;
 
-        const start_date = date_utils.format(this.task._start, 'MMM D', this.gantt.options.language);
+        const start_date = date_utils.format(
+            this.task._start,
+            'MMM D',
+            this.gantt.options.language
+        );
         const end_date = date_utils.format(
             date_utils.add(this.task._end, -1, 'second'),
             'MMM D',
@@ -671,7 +675,7 @@ class Bar {
             target_element: this.$bar,
             title: this.task.name,
             subtitle: subtitle,
-            task: this.task,
+            task: this.task
         });
     }
 
@@ -1414,7 +1418,10 @@ class Gantt {
                 tick_class += ' thick';
             }
             // thick ticks for quarters
-            if (this.view_is(VIEW_MODE.MONTH) && (date.getMonth() + 1) % 3 === 0) {
+            if (
+                this.view_is(VIEW_MODE.MONTH) &&
+                (date.getMonth() + 1) % 3 === 0
+            ) {
                 tick_class += ' thick';
             }
 
